@@ -39,10 +39,8 @@ Compile it:
 
 ```
 cd ~/.tmux/plugins/tmux-wormhole
-GO11MODULE=on go install ./...
+GO11MODULE=on go build -o tmux-wormhole cmd/tmux-wormhole/main.go
 ```
-
-Make sure that `~/go/bin/` is in your `PATH`. 
 
 Source it by adding this to your `~/.tmux.conf`:
 
