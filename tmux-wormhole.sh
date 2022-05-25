@@ -638,7 +638,7 @@ tmux respawn-pane -k -t "${TMUX_WORMHOLE_ORIG_WINDOW}" \
      -e TMUX_WORMHOLE_NO_DEFAULT_OPEN="${TMUX_WORMHOLE_NO_DEFAULT_OPEN}" \
      -e TMUX_WORMHOLE_NO_ASK_TO_OPEN="${TMUX_WORMHOLE_NO_ASK_TO_OPEN}" \
      -e TMUX_WORMHOLE_CAN_OVERWRITE="${TMUX_WORMHOLE_CAN_OVERWRITE}" \
-     "if ! $TMUX_WORMHOLE_BIN ; then echo Hit enter. ; read ; fi ; \
+     /usr/bin/env bash -c "if ! $TMUX_WORMHOLE_BIN ; then echo Hit enter. ; read ; fi ; \
       tmux swap-pane -t \"${TMUX_WORMHOLE_ORIG_WINDOW}\" ; \
       [[ "$TZOOM" = "1" ]] && tmux resize-pane -Z ; \
       tmux -L wormhole kill-session -t \"${TMUX_WORMHOLE_SESSION}\" ; 
