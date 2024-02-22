@@ -39,7 +39,16 @@ function pane_command() {
 
 ######################################################################
 
-TMUX_WORMHOLE_BIN="$HOME/.tmux/plugins/tmux-wormhole/tmux-wormhole"
+TMUX_WORMHOLE_BIN="${HOME}/.tmux/plugins/tmux-wormhole/tmux-wormhole"
+
+if [[ -e "${TMUX_PLUGIN_MANAGER_PATH}tmux-wormhole/tmux-wormhole" ]]; then
+    TMUX_WORMHOLE_BIN="${TMUX_PLUGIN_MANAGER_PATH}tmux-wormhole/tmux-wormhole"
+elif [[ -e "${XDG_CONFIG_HOME}/tmux/plugins/tmux-wormhole/tmux-wormhole" ]]; then
+    TMUX_WORMHOLE_BIN="${XDG_CONFIG_HOME}/tmux/plugins/tmux-wormhole/tmux-wormhole"
+elif [[ -e "${HOME}/.config/tmux/plugins/tmux-wormhole/tmux-wormhole" ]]; then
+    TMUX_WORMHOLE_BIN="${HOME}/.config/tmux/plugins/tmux-wormhole/tmux-wormhole"
+fi
+
 if [[ ! -e "${TMUX_WORMHOLE_BIN}" ]] ; then
     tmux split-window "echo Could not execute tmux-wormhole binary $TMUX_WORMHOLE_BIN. Please check plugin installation. ; read"
     exit 1
